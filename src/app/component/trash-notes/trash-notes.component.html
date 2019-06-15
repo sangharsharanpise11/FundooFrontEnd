@@ -1,0 +1,25 @@
+<h3>Trashed Notes are</h3>
+<div fxLayout="wrap-row" fxLayoutGap="80px" class="main" *ngFor="let items of notes">
+    <mat-card class="card" class="trashNotes" >
+        <div class="title" fxlayoutGap="50px">{{items.title}}</div>&nbsp;
+        <div class="subtitle">{{items.description}}</div>
+        &nbsp;
+        <div>
+        <button mat-icon-button>
+          <mat-icon [matMenuTriggerFor]="more">more_vert</mat-icon>
+        </button>
+        <mat-menu #more="matMenu">
+          <div>
+            <button mat-button (click)="deletePermenently(items)">Delete forever</button>
+          </div>
+          <div>
+            <div>
+              <button mat-button (click)="restore(items)">Restore</button>
+            </div>
+          </div>
+        </mat-menu>
+        </div>
+        </mat-card>
+</div>
+
+

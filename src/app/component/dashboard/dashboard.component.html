@@ -1,0 +1,119 @@
+<div fxLayout="column" fxLayoutAlign="end">
+  <div fxLayoutAlign="center start"  class="toolbar">
+
+    <mat-toolbar class="mat-toolbar">
+      <mat-toolbar-row>
+        <div>
+          <button mat-button (click)="sidenav.toggle()" class="mat-icon-button">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div>
+          <img mat-img src="https://ssl.gstatic.com/keep/keep.ico" />
+        </div>
+        <div>
+          <span class="title">fundooNotes</span>
+        </div>
+        <div>
+          <mat-card fxLayoutAlign="center center" class="searchInput">
+            <button mat-icon-button class="searchButton">
+              <mat-icon>search</mat-icon>
+            </button>
+            <input mat-input class="searchInput" placeholder="Search">
+          </mat-card>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center"class="icon" >
+          <div>
+            <button mat-icon-button matTooltip="refresh">
+              <mat-icon>refresh</mat-icon>
+            </button>
+          </div>
+
+          <div> <button mat-icon-button matTooltip="list view">
+              <mat-icon>view_agenda</mat-icon>
+            </button>
+          </div>
+         
+          <div>
+            <button mat-icon-button matTooltip="setting">
+              <mat-icon style="font-size:25px">settings</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center" >
+            <div fxLayout="wrap-row" fxLayoutAlign="space-evenly center" class="icons">
+                <button mat-icon-button mat-toolbar matTooltip="apps">
+                  <mat-icon>apps</mat-icon>
+                </button>
+              </div>
+    
+              <div fxLayout="wrap-row" fxLayoutAlign="space-evenly center" >
+                <button mat-icon-button mat-toolbar matTooltip="account" [matMenuTriggerFor]="accountmenu">
+                  <mat-icon >account_circle</mat-icon>
+                </button>
+              </div>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <mat-menu #accountmenu="matMenu">
+    <mat-card style="height: 90px;width: 245px;">
+      <div fxLayout="row">
+        <button mat-button >
+          <mat-icon style="font-size: 40px">account_circle</mat-icon>
+          <!-- <img mat-card-avatar src="http://localhost:9090/user/getuploadedimage/{{token}}" /> -->
+        </button>
+      </div>
+      <span> {{name}} </span>
+      <br>
+      <span> {{email}} </span>
+      <mat-divider></mat-divider>
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <div class="buttonAccount" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="80px">
+            <button color="primary" id="register" routerLink='/register'> Add Account </button>
+            <button color="primary" id="login" routerLink="/login">Sign Out</button>
+        </div>
+      </div>
+    </mat-card>
+  </mat-menu>
+   
+
+  <div class="sidenavmain">
+    <mat-sidenav-container style="width:100%;">
+      <mat-sidenav class="sidenav" #sidenav mode='side' role="navigation">
+        <mat-nav-list>
+          <button mat-raised-button role="listitem" [routerLink]="['note']">
+            <mat-icon class="icons">lightbulb_outline</mat-icon>
+            <span class="notes">Notes</span>
+          </button>
+          <button mat-raised-button role="listitem" [routerLink]="['remainder']">
+            <mat-icon class="icons">notifications_none</mat-icon>
+            <span class="notes"> Reminders</span>
+          </button>
+          <hr>
+
+          <p class="label"> LABELS</p>
+          <button mat-raised-button role="listitem" [routerLink]="['label']">
+            <mat-icon class="icons">edit</mat-icon>
+            <span class="notes">Edit labels</span>
+          </button>
+          <hr>
+          <button mat-raised-button role="listitem" [routerLink]="['archive']">
+            <mat-icon class="icons">archive</mat-icon>
+            <span class="notes"> Archive </span>
+          </button>
+          <button mat-raised-button role="listitem" [routerLink]="['trash']">
+            <mat-icon class="icons">delete</mat-icon>
+            <span class="notes"> Trash</span>
+          </button>
+
+        </mat-nav-list>
+      </mat-sidenav >
+      <app-addnote></app-addnote>
+      <!-- <app-note></app-note> -->
+      <router-outlet></router-outlet>
+    <!-- <app-trash-notes></app-trash-notes>  -->
+    <!-- <app-archive-notes></app-archive-notes> -->
+    </mat-sidenav-container>
+  </div>
+</div>

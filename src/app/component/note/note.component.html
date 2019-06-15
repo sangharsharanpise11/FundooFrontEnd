@@ -1,0 +1,105 @@
+<div style="  height: -webkit-fill-available;">
+   <div class="main" *ngFor="let items of notes">
+      <div class="updatenote">
+         <mat-card class="note" [ngStyle]="{'background-color':items.color}">
+            <div fxLayout="row wrap" fxLayoutAlign="end start" style="height: 30px;">
+               <button mat-icon-button (click)="pin(items)">
+                  <img src="../../../assets/images.png" matTooltip="Pin" mat-button style="height: 30px;width: 30px;">
+               </button>
+            </div>
+            <mat-card-title class="title">
+               <div (click)="openDialog(items)" matInput type="text" placeholder="title">{{items.title}}</div>
+            </mat-card-title>
+            <mat-card-subtitle class="subtitle">
+               <div (click)="openDialog(items)" matInput type="text" placeholder="title">{{items.description}}</div>
+            </mat-card-subtitle>
+           
+            <!-- <mat-chip-list #chipList>
+               <mat-chip *ngFor="let label of labelsOfNotes">
+                {{label.labelName}}
+                <mat-icon (click)="deleteLabelToNote(items,label)">cancel</mat-icon>
+               </mat-chip>
+            </mat-chip-list> -->
+            <app-labelview [noteData]="items"></app-labelview>   
+           <app-appicons [noteData]="items"></app-appicons>
+            
+            <!-- <mat-card-actions class="icons">
+               <button mat-icon-button matTooltip="Remind me" [matMenuTriggerFor]="reminder">
+                  <mat-icon>add_alert</mat-icon>
+               </button>
+               <button mat-icon-button matTooltip="Collaborator">
+                  <mat-icon>person_add</mat-icon>
+               </button>
+               <button mat-icon-button matTooltip="Change color" (click)="changeColor(items)"
+                  [matMenuTriggerFor]="colorList">
+                  <mat-icon>palette</mat-icon>
+               </button>
+               <button mat-icon-button matTooltip="Add image">
+                  <mat-icon>image</mat-icon>
+               </button>
+               <button mat-icon-button matTooltip="Archive" (click)="archive(items)">
+                  <mat-icon>archive</mat-icon>
+               </button>
+               <button mat-icon-button matTooltip="More" [matMenuTriggerFor]="menu">
+                  <mat-icon>more_vert</mat-icon>
+               </button>
+               <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <span (click)="deletenote(items)">delete note</span>
+                  </button>
+                  <button mat-menu-item>
+                     <span [matMenuTriggerFor]="label" (click)="onEvent($event)">add label</span>
+                  </button>
+                  <button mat-menu-item>
+                     <span>add drawing</span>
+                  </button>
+                  <button mat-menu-item>
+                     <span>restore</span>
+                  </button>
+               </mat-menu>
+
+               <mat-menu #label="matMenu">
+                  <div fxLayout="column">
+                     <div>Label note</div>
+                     <div *ngFor="let labels of allLabels">
+                        <mat-checkbox (click)="addLabelToNote(labels.labelId,items)">
+                           <div [style.fontSize.px]=12>{{labels.labelName}}</div>
+                        </mat-checkbox>
+                        {{labels.labelName}}
+                     </div>
+                  </div>
+               </mat-menu>
+
+
+               <mat-menu #colorList="matMenu">
+                  <div fxLayout="row" fxLayoutGap="10px" *ngFor="let color of colors">
+                     <div *ngFor="let noteColor of color">
+                        <button [ngStyle]="{ 'background-color': noteColor.colorName }"
+                           (click)="changeColor(noteColor.colorName)" matTooltip="{{ noteColor.colorName }}"
+                           mat-mini-fab></button>
+                     </div>
+                  </div>
+               </mat-menu>
+
+               <mat-menu #reminder="matMenu">
+                  <button mat-menu-item (click)="todayReminder()">
+                     <span>Later Today</span>
+                  </button>
+                  <button mat-menu-item (click)="tomorrowReminder()">
+                     <span>Tommorow</span>
+                  </button>
+                  <button mat-menu-item (click)="nextWeek()">
+                     <span>Next Week</span>
+                  </button>
+                  <button mat-menu-item>
+                   <mat-icon>access_time</mat-icon>
+                     <span>Peek Date & Time</span>
+                  </button>
+               </mat-menu>
+            </mat-card-actions> -->
+         </mat-card>
+
+      </div>
+   </div>
+</div>
+<!-- </div> -->

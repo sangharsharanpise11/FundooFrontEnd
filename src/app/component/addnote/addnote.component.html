@@ -1,0 +1,39 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="createNote">
+  <mat-card class="mat1" *ngIf="!popup" (click)=onPopup() class="popupCard">
+    <div><input matInput placeholder="Take a note..." /></div>
+    <div fxLayout="row" fxLayoutAlign="end-center">
+      <div class=icons>
+        <button mat-icon-button matTooltip="new list">
+          <mat-icon>check_box</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="new note with drawing">
+          <mat-icon>brush</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="new note with image">
+          <mat-icon>image</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card>
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayout>
+    <mat-card class="mat2" *ngIf="popup" fxLayoutAlign="start center" class="popdownCard">
+      <div flex=10 fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px">
+        <div >
+          <input matInput type="text" placeholder="Title"  [(ngModel)]="note.title" />
+        </div>
+         <!-- &nbsp; -->
+        <div>
+          <input  matInput type="text" placeholder="Take a note..." [(ngModel)]="note.description" />
+        </div>
+        <div class="icon">
+          <app-appicons></app-appicons>
+
+        </div>
+        <div class=close fxLayout="row" fxLayoutAlign="space-between start">
+          <button mat-raised-button (click)="onClose()">close</button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

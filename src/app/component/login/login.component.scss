@@ -1,0 +1,44 @@
+.matCard{
+  
+    width:20%;
+    height: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+    margin-top: 3%;
+    border-radius: random($limit: 3);
+    box-shadow: 0 8px 16px 0 rebeccapurple (187, 71, 168, 0.459); 
+    align-content: center 
+  }
+.input-style{
+    width: 50%;
+}
+// #register{
+//     margin-left: 10px;
+//     margin-right: 6px;
+// }
+// #login{
+//    margin-left: 180px;
+//    margin-right: -10px;
+//    //margin-top: -3;
+// }
+.matCardTitle{
+    color:blue;
+    margin-left: 9%;
+}
+.matCardSubTitle{
+    color: palevioletred;
+    margin-left: 5%;
+}
+.example-container{
+    width: 80%;
+    color:black
+  
+}
+.input-style{
+    color: black;
+    width: 100%
+}
+.buttonLogin{
+    display:inline-block;
+}

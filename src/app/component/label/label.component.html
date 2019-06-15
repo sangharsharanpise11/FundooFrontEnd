@@ -1,0 +1,33 @@
+<div fxLayout="column" fxLayoutAlign="start start" class="labels">
+  <div>
+    <h4>Edit Labels</h4>
+  </div>
+
+  <div>
+    <div fxLayout="row">
+      <input matInput type="text" placeholder="Create new label" [formControl]="labelName">
+      <div fxLayoutAlign="end end">
+      </div>
+    </div>
+  </div>
+
+  <div *ngFor="let items of labels">
+    <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 252px;">
+      <button mat-icon-button>
+        <mat-icon matTooltip="delete" (click)="deleteLabel(items)" style="height: 20px;width: 20px;">delete</mat-icon>
+      </button>
+      <!-- <mat-form-field fxlayoutGap="-100px">
+        <input matInput value=" {{items.labelName}}">
+      </mat-form-field> -->
+      <input type="text" matInput value="{{items.labelName}}" [formControl]="labelName">
+      <!-- {{items.labelName}} -->
+      <button mat-icon-button>
+        <mat-icon matTooltip="edit label" (click)="updateLabel(items)" style="height: 20px;width: 20px;">edit</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="done">
+    <button mat-button (click)=onDone()>Done</button>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="main" fxLayout="column" fxLayoutAlign="center center">
+  <form [formGroup]="forgotForm" >
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-card fxLayout="column" fxLayoutAlign="center center" class="matCard">
+        <mat-card-title  fxLayout="column" fxLayoutAlign="center center">
+          <h3>FundooNote Application</h3>
+        </mat-card-title>
+        <mat-card-subtitle fxLayout="column" fxLayoutAlign="center center">
+          <h2>Forgot Password</h2>
+        </mat-card-subtitle> 
+        <div fxLayout="column" fxLayoutAlign="center center">   
+          <mat-card-content fxLayout="column" fxLayoutAlign="center center"> 
+            <div>          
+              <mat-form-field appearence="outline" class="input-style">
+                  <mat-label>*Enter Your EmailId</mat-label>
+                <input type="text" matInput placeholder="EmailId" formControlName="emailId"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="buttonForgot" fxLayoutGap="80px">
+              <button mat-raised-button color="primary" id="forgot" (click)="onForgot()">Forgot</button>
+              <button mat-raised-button color="primary" id="reset" routerLink='/resetPassword'>Reset Password </button>
+            </div>
+          </mat-card-content> 
+        </div> 
+      </mat-card>
+    </div>
+  </form>
+</div>

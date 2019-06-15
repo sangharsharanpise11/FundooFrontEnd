@@ -1,0 +1,39 @@
+<div class="main" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="matCard">
+    <mat-card-title class="matCardTitle" fxLayout="column" fxLayoutAlign="center center">
+      <h3>FundooNote Application</h3>
+    </mat-card-title>
+    <mat-card-subtitle class="matCardSubTitle" fxLayout="column" fxLayoutAlign="center center">
+      <h2>Reset Password</h2>
+    </mat-card-subtitle>
+    <div class="example container">
+      <form [formGroup]="resetForm">
+      <mat-card-content fxLayout="column" fxLayout="column" fxLayoutAlign="center center">
+        <div>
+          <mat-form-field appearance="legacy" class="input-style">
+            <mat-label>*Enter New Password</mat-label>
+            <input type="password" matInput placeholder="New Password" [type]="!hide ? 'password' : 'text'"
+            formControlName="newPassword" required>
+            <mat-icon matSuffix  (click)="hide = !hide">{{!hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+         </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearence="outline" class="input-style">
+              <mat-label>*Enter Confirm Password</mat-label>
+            <input type="password" matInput placeholder="Confirm Password" [type]="!hide ? 'password' : 'text'"
+              formControlName="confirmPassword" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{!hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+        </div>
+        
+        <div class="buttonReset" fxLayoutGap="100px">
+          <button mat-raised-button color="primary" id="resetPassword" (click)="onResetPassword()">Reset</button>
+
+          <button mat-raised-button color="primary" id="login" routerLink='/login'>Login </button>
+
+        </div>
+      </mat-card-content>
+      </form>
+    </div>
+  </mat-card>
+</div>

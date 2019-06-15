@@ -1,0 +1,7 @@
+ <mat-chip-list #chipList>
+       <mat-chip *ngFor="let label of remainderOfNotes">
+         {{label.labelName}}
+         <mat-icon (click)="deleteRemainderOfNote(items,label)">cancel</mat-icon>
+       </mat-chip>
+  </mat-chip-list>
+               

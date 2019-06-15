@@ -1,0 +1,32 @@
+<mat-card class="main">
+    <mat-card-title>
+        <input matInput class="title" type="text" [formControl]="title" />
+    </mat-card-title>
+    <mat-card-subtitle>
+        <input matTextareaAutosize matInput class="description" type="text"  [formControl]="description"/>
+    </mat-card-subtitle>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+        <app-appicons></app-appicons>
+        <div class=close fxLayout="row" fxLayoutAlign="end end">
+          <button mat-raised-button (click)="updateNote(items)">close</button>
+        </div>
+    </mat-card-actions>
+  </mat-card>
+  
+
+<!-- 
+<div fxLayout="column" fxLayoutAlign="start start">
+  <div>                                         
+    <input matInput class="title" type="text" [formControl]="title" />
+  </div>
+
+  <div>
+    <textarea matTextareaAutosize matInput class="description" type="text"  [formControl]="description" ></textarea>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <app-appicons></app-appicons>
+    <div class=close fxLayout="row" fxLayoutAlign="space-between start">
+      <button mat-raised-button (click)="updateNote(items)">close</button>
+    </div>
+  </div>
+</div> -->

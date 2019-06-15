@@ -1,0 +1,38 @@
+<div class="main" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="matCard">
+    <mat-card-title class="matCardTitle" fxLayoutAlign="center center">
+      <h3>FundooNote Application</h3>
+    </mat-card-title>
+    <mat-card-subtitle class="matCardSubTitle" fxLayoutAlign="center center">
+      <h2>Login</h2>
+    </mat-card-subtitle>
+    <div class="example container">
+      <form [formGroup]="loginForm">
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <div>
+          <mat-form-field appearence="outline" class="input-style">
+              <mat-label>*Enter Your EmailId</mat-label>
+            <input type="text" matInput placeholder="EmailId" formControlName="emailId"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearence="outline" class="input-style">
+              <mat-label>*Enter Your Password</mat-label>
+            <input type="password" matInput placeholder="Password" [type]="!hide ? 'password' : 'text'"
+              formControlName="password" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{!hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="buttonLogin" fxLayoutGap="50px">
+          <button mat-raised-button color="primary" id="register" (click)="onLogin()">Login</button>
+
+          <button mat-raised-button color="primary" id="login" routerLink='/register'>Register </button>
+
+        </div>
+      </mat-card-content>
+      </form>
+    </div>
+  </mat-card>
+</div>
