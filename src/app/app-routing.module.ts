@@ -14,6 +14,7 @@ import { TrashNotesComponent } from './component/trash-notes/trash-notes.compone
 import { ArchiveNotesComponent } from './component/archive-notes/archive-notes.component';
 import { LabelComponent } from './component/label/label.component';
 import { RemainderComponent } from './component/remainder/remainder.component';
+import { CollabratorDialogComponent } from './component/collabrator-dialog/collabrator-dialog.component';
 
 
 const routes: Routes = [
@@ -87,6 +88,10 @@ const routes: Routes = [
     {
       path: 'remainder',
       component: RemainderComponent
+    },
+    {
+      path:'collabrator-dialog',
+      component:CollabratorDialogComponent
     },
      ]
   },

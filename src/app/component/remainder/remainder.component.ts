@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NoteService } from 'src/app/service/note.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-remainder',
@@ -7,18 +8,29 @@ import { NoteService } from 'src/app/service/note.service';
   styleUrls: ['./remainder.component.scss']
 })
 export class RemainderComponent implements OnInit {
- notes : any[];
+reminderedNotes : any[];
+@Input() noteData:any;
 
-  constructor(private noteService:NoteService) { }
+  constructor(private noteService:NoteService,private matSnackBar:MatSnackBar) { }
 
   ngOnInit() {
-    
-  }
-
-  getAllNotes(){
-    this.noteService.getRequest('note/getAllNotes').subscribe(
+ 
+    this.noteService.getRequest('note/getRemainderNotes').subscribe(
       (response:any)=>{
-        this.notes=response;
+        this.reminderedNotes=response;
+        console.log("in remainder notes :"+this.reminderedNotes)
+      }
+    )
+  }
+ 
+  deleteReminder(items){
+    this.noteService.deleteRequest('note/deleteRemainder?noteId='+items.noteId).subscribe(
+      (response:any)=>{
+        if(response.statusCode===21){
+          this.matSnackBar.open(
+            "reminder deleted successfully","undo",{duration:2500}
+          )
+        }
       }
     )
   }

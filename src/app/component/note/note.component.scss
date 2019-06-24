@@ -10,7 +10,6 @@
   
     }
 .updatenote{
-
     color: black;
     font-weight: lighter;
     font-size: 18px;
@@ -19,12 +18,14 @@
 }
 .title{
 margin-top: -20px;
+word-wrap: break-word;
 }
 .subtitle{
 margin-top: -3px;
+word-wrap: break-word;
 }
 .note{
-    height: 120px;
+    height: fit-content;
     width: 240px;
   margin-top: 30px;
   margin-bottom: 1px;

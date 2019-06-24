@@ -1,7 +1,7 @@
-<div fxLayout="column" fxLayoutAlign="end">
+<div fxLayout="column" fxLayoutAlign="end" style="overflow-y: hidden;">
   <div fxLayoutAlign="center start"  class="toolbar">
 
-    <mat-toolbar class="mat-toolbar">
+    <mat-toolbar class="mat-toolbar" >
       <mat-toolbar-row>
         <div>
           <button mat-button (click)="sidenav.toggle()" class="mat-icon-button">
@@ -12,7 +12,7 @@
           <img mat-img src="https://ssl.gstatic.com/keep/keep.ico" />
         </div>
         <div>
-          <span class="title">fundooNotes</span>
+          <span class="title" >fundooNotes</span>
         </div>
         <div>
           <mat-card fxLayoutAlign="center center" class="searchInput">
@@ -78,33 +78,41 @@
   </mat-menu>
    
 
-  <div class="sidenavmain">
+  <div class="sidenavmain" style="overflow-y: hidden;">
     <mat-sidenav-container style="width:100%;">
-      <mat-sidenav class="sidenav" #sidenav mode='side' role="navigation">
+      <mat-sidenav class="sidenav" #sidenav mode='side' role="navigation" >
         <mat-nav-list>
           <button mat-raised-button role="listitem" [routerLink]="['note']">
-            <mat-icon class="icons">lightbulb_outline</mat-icon>
-            <span class="notes">Notes</span>
+            <mat-icon style="margin-left: 4px"class="icons">lightbulb_outline</mat-icon>
+            <span style="margin-left: 38px" class="notes">Notes</span>
           </button>
           <button mat-raised-button role="listitem" [routerLink]="['remainder']">
-            <mat-icon class="icons">notifications_none</mat-icon>
-            <span class="notes"> Reminders</span>
+            <mat-icon style="margin-left: 4px" class="icons">notifications_none</mat-icon>
+            <span style="margin-left: 38px" class="notes"> Reminders</span>
           </button>
           <hr>
 
           <p class="label"> LABELS</p>
+          
+          <div *ngFor="let items of allLabels" fxLayout="row" class="allLabels">
+              <button mat-button style="margin-left: 4px">
+                <img src="../../../assets/arrow.svg" >
+              </button>
+              <div>{{ items.labelName }}</div>
+            </div>
           <button mat-raised-button role="listitem" [routerLink]="['label']">
-            <mat-icon class="icons">edit</mat-icon>
-            <span class="notes">Edit labels</span>
+            <mat-icon style="margin-left: 4px" class="icons">edit</mat-icon>
+            <span style="margin-left: 38px"class="notes">Edit labels</span>
           </button>
+       
           <hr>
           <button mat-raised-button role="listitem" [routerLink]="['archive']">
-            <mat-icon class="icons">archive</mat-icon>
-            <span class="notes"> Archive </span>
+            <mat-icon style="margin-left: 4px" class="icons">archive</mat-icon>
+            <span style="margin-left: 38px" class="notes"> Archive </span>
           </button>
           <button mat-raised-button role="listitem" [routerLink]="['trash']">
-            <mat-icon class="icons">delete</mat-icon>
-            <span class="notes"> Trash</span>
+            <mat-icon style="margin-left: 4px" class="icons">delete</mat-icon>
+            <span style="margin-left: 38px" class="notes"> Trash</span>
           </button>
 
         </mat-nav-list>

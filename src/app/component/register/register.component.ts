@@ -32,7 +32,11 @@ onRegister() {
   this.httpservice.postRequest('register', this.registerForm.value).subscribe(
     (response: any) => {
       if (response.statusCode ===20) {
-        console.log(response);
+       // console.log(response);
+        //localStorage.setItem('emailId',this.registerForm.value.emailId);
+        // localStorage.setItem('firstName',this.registerForm.value.firstName);
+        //localStorage.setItem('LastName',this.registerForm.value.lastName);
+
         this.snackBar.open(
           "Registered Successfully",
           "undo",

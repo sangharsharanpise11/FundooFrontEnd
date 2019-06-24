@@ -1,0 +1,6 @@
+<mat-chip-list #chipList class="matchip">
+  <mat-chip *ngFor="let label of labelsOfNotes">
+    {{label.labelName}}
+    <mat-icon (click)="deleteLabelToNote(label)">cancel</mat-icon>
+  </mat-chip>
+</mat-chip-list>

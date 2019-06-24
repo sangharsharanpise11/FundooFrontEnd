@@ -4,6 +4,9 @@ import { Login } from 'src/app/model/login';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { DialognoteComponent } from '../dialognote/dialognote.component';
 import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.component';
+import { LabelService } from 'src/app/service/label.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataService } from 'src/app/service/DataService';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,9 +18,9 @@ export class DashboardComponent implements OnInit {
  token:string;
  name:string;
  login:Login=new Login();
-
-
-  constructor(private router :Router,private matdialog:MatDialog ) { }
+ allLabels:any[];
+ message:any;
+  constructor(private dataService:DataService,private matSnackBar:MatSnackBar,private router :Router,private matdialog:MatDialog ,private labelService:LabelService) { }
 
   ngOnInit() {
 
@@ -25,6 +28,13 @@ export class DashboardComponent implements OnInit {
     console.log(this.emailId);
     this.token=localStorage.getItem('token')
     console.log(this.token);
+
+    this.dataService.currentMessage.subscribe(
+      (response: any) => {
+       //this.message = response;
+        this.getAllLabels();
+      }
+    );
   }
 
   onLogout()
@@ -64,5 +74,13 @@ export class DashboardComponent implements OnInit {
         console.log('The dialog was closed');
       });
     }
-   
+ 
+    getAllLabels(){
+      this.labelService.getRequest('label/getlabel').subscribe(
+               (response:any)=>{
+        this.allLabels=response;
+         }
+      )
+    }
+    
 }

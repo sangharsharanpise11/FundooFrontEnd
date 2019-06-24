@@ -1,29 +1,29 @@
-<div style="  height: -webkit-fill-available;">
-   <div class="main" *ngFor="let items of notes">
-      <div class="updatenote">
-         <mat-card class="note" [ngStyle]="{'background-color':items.color}">
-            <div fxLayout="row wrap" fxLayoutAlign="end start" style="height: 30px;">
-               <button mat-icon-button (click)="pin(items)">
-                  <img src="../../../assets/images.png" matTooltip="Pin" mat-button style="height: 30px;width: 30px;">
-               </button>
-            </div>
-            <mat-card-title class="title">
-               <div (click)="openDialog(items)" matInput type="text" placeholder="title">{{items.title}}</div>
-            </mat-card-title>
-            <mat-card-subtitle class="subtitle">
-               <div (click)="openDialog(items)" matInput type="text" placeholder="title">{{items.description}}</div>
-            </mat-card-subtitle>
-           
-            <!-- <mat-chip-list #chipList>
-               <mat-chip *ngFor="let label of labelsOfNotes">
-                {{label.labelName}}
-                <mat-icon (click)="deleteLabelToNote(items,label)">cancel</mat-icon>
-               </mat-chip>
-            </mat-chip-list> -->
-            <app-labelview [noteData]="items"></app-labelview>   
-           <app-appicons [noteData]="items"></app-appicons>
-            
-            <!-- <mat-card-actions class="icons">
+<h3 style="margin-left: 20%">PINNED</h3>
+<div>
+   <app-pin></app-pin>
+</div>
+<div>
+   <h3 style="margin-left: 20%">OTHERS</h3>
+   <div style="height: -webkit-fill-available;" fxLayout="row wrap">
+      <div class="main" *ngFor="let items of notes">
+         <div class="updatenote">
+            <mat-card class="note" [ngStyle]="{'background-color':items.color}">
+               <div fxLayout="row wrap" fxLayoutAlign="end start" style="height: 30px;">
+                  <button mat-icon-button (click)="pin(items)">
+                     <img src="../../../assets/unpin.svg" matTooltip="Pin" mat-button style=" height:33px; width: 20px;margin-top: -36px;">
+                  </button>
+               </div>
+               <mat-card-title class="title">
+                  <div (click)="openDialog(items)" matInput type="text" placeholder="title">{{items.title}}</div>
+               </mat-card-title>
+               <mat-card-subtitle class="subtitle">
+                  <div (click)="openDialog(items)" matInput type="text" placeholder="title">{{items.description}}</div>
+               </mat-card-subtitle>
+               <app-labelview [noteData]="items"></app-labelview>
+               <mat-chip>{{items.remainder}}<mat-icon (click)="deleteReminder(items)">cancel</mat-icon></mat-chip>
+               <app-appicons [noteData]="items"></app-appicons>
+
+               <!-- <mat-card-actions class="icons">
                <button mat-icon-button matTooltip="Remind me" [matMenuTriggerFor]="reminder">
                   <mat-icon>add_alert</mat-icon>
                </button>
@@ -97,8 +97,9 @@
                   </button>
                </mat-menu>
             </mat-card-actions> -->
-         </mat-card>
+            </mat-card>
 
+         </div>
       </div>
    </div>
 </div>

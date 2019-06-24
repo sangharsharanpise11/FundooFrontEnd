@@ -27,6 +27,7 @@ export class AppiconsComponent implements OnInit {
   @Input() noteData: any;
   remainderData: any;
   items: any;
+  remData:any;
   allLabels: any[];
 
   colors = [
@@ -57,11 +58,11 @@ export class AppiconsComponent implements OnInit {
     this. getLabels();
   }
 
-  todayReminder() {
+  todayReminder(items) {
     console.log("Note is got" + this.noteData.noteId)
     const currentDate = new Date().toDateString();
     console.log("Date :" + currentDate)
-    this.noteService.postRequest("note/setRemainder?noteId=" + this.noteData.noteId + "&time=" + currentDate, "").subscribe(
+    this.noteService.postRequest("note/reminder?noteId=" + this.noteData.noteId + "&remainder=" + currentDate, "").subscribe(
       (response: any) => {
         if (response.statusCode === 21) {
           this.matSnackBar.open(
@@ -81,11 +82,19 @@ export class AppiconsComponent implements OnInit {
     )
   }
 
-  tomorrowReminder() {
-    var date = new Date();
-    date.setDate(date.getDate() + 1);
-    console.log(date.toDateString());
-    this.noteService.postRequest("note/setRemainder?noteId=" + this.noteData.noteId + "&time=" + date, "").subscribe(
+   tomorrowReminder() {
+  //   var date1 = new Date();
+  //   date1.setDate(date1.getDate() + 2);
+  //   console.log(date1.toString());
+    
+      let currDate=new Date();
+      var nextDate=new Date(currDate);
+      nextDate.setDate(currDate.getDate()+1);
+    this.remData={
+      reminder:nextDate.toISOString()
+    }
+    console.log(this.remData.remainder);
+    this.noteService.postRequest("note/reminder?noteId=" + this.noteData.noteId + "&remainder=" + this.remData.reminder, "").subscribe(
       (response: any) => {
         this.matSnackBar.open(
           "remainder set successfully", "undo", { duration: 2500 }
@@ -93,11 +102,16 @@ export class AppiconsComponent implements OnInit {
       }
     )
   }
-  nextWeek() {
-    var date = new Date();
-    date.setDate(date.getDate() + 7);
-    console.log(date.toDateString());
-    this.noteService.postRequest("note/setRemainder?noteId=" + this.noteData.noteId + "&time=" + date, "").subscribe(
+
+   nextWeek() {
+      var day=new Date();
+      var days=7-day.getDay()+4;
+      var nextDay=new Date(day.setDate(day.getDate()+days));
+      this.remData={
+        reminder:nextDay.toISOString()
+      }
+      console.log("next week reminder")
+      this.noteService.postRequest("note/reminder?noteId=" + this.noteData.noteId + "&remainder=" + this.remData.reminder, "").subscribe(
       (response: any) => {
         this.matSnackBar.open(
           "remainder set successfully", "undo", { duration: 2500 }
@@ -130,12 +144,27 @@ export class AppiconsComponent implements OnInit {
       }
     )
   }
+  // openDialog(items): void {
+    
+  //   const dialogRef = this.matdialog.open(DialognoteComponent, {
+  //     width: '600px', height: '230px',
+  //     data: {
+  //       title: items.title,
+  //       description: items.description,
+  //       noteId: items.noteId
+  //     }
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //   });
+  // }
   openCollaboratorDialog() {
     const dialogRef = this.matDialog.open(CollabratorDialogComponent, {
       width: '600px', height: '230px',
       data: {
         noteId: this.noteData.noteId
-      }
+           }
     });
     dialogRef.afterClosed().subscribe(result => { console.log('dialog was closed'); })
   }

@@ -27,6 +27,7 @@ constructor(private httpService:HttpService,private snackBar:MatSnackBar, privat
 //  this.token = this.route.snapshot.paramMap.get('token');
  
  this.token=localStorage.getItem('token')
+
  console.log("token :"+this.token);
   }
 onResetPassword()

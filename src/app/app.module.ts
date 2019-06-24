@@ -40,6 +40,8 @@ import { LabelComponent } from './component/label/label.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { CollabratorDialogComponent } from './component/collabrator-dialog/collabrator-dialog.component';
 import { LabelviewComponent } from './component/labelview/labelview.component';
+import { PinComponent } from './component/pin/pin.component';
+import { ReminderviewComponent } from './component/reminderview/reminderview.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { LabelviewComponent } from './component/labelview/labelview.component';
     LabelComponent,
     CollabratorDialogComponent,
     LabelviewComponent,
+    PinComponent,
+    ReminderviewComponent,
    
 
 

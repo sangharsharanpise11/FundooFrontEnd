@@ -1,8 +1,9 @@
 <h3>Trashed Notes are</h3>
-<div fxLayout="wrap-row" fxLayoutGap="80px" class="main" *ngFor="let items of notes">
-    <mat-card class="card" class="trashNotes" >
-        <div class="title" fxlayoutGap="50px">{{items.title}}</div>&nbsp;
-        <div class="subtitle">{{items.description}}</div>
+<div fxLayout="row wrap" fxLayoutAlign="row center" fxLayoutGap="10px" class="main">
+    <mat-card class="card" class="trashNotes"  *ngFor="let items of notes" [ngStyle]="{'background-color':items.color}">
+
+        <div class="title" fxlayoutGap="10px" style="word-wrap: break-word;">{{items.title}}</div>&nbsp;
+        <div class="subtitle" style="word-wrap: break-word;">{{items.description}}</div>
         &nbsp;
         <div>
         <button mat-icon-button>

@@ -1,5 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="center center" class="createNote">
-  <mat-card class="mat1" *ngIf="!popup" (click)=onPopup() class="popupCard">
+  
+  <mat-card class="mat1" *ngIf="!popup" (click)=onPopup() class="popupCard"  >
     <div><input matInput placeholder="Take a note..." /></div>
     <div fxLayout="row" fxLayoutAlign="end-center">
       <div class=icons>
@@ -19,12 +20,12 @@
   <div fxLayout="row" fxLayoutAlign="center center" fxLayout>
     <mat-card class="mat2" *ngIf="popup" fxLayoutAlign="start center" class="popdownCard">
       <div flex=10 fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px">
-        <div >
-          <input matInput type="text" placeholder="Title"  [(ngModel)]="note.title" />
+        <div>
+          <input matInput type="text" placeholder="Title"  [(ngModel)]="note.title" style="width: 530px;    word-wrap: break-word;" />
         </div>
          <!-- &nbsp; -->
         <div>
-          <input  matInput type="text" placeholder="Take a note..." [(ngModel)]="note.description" />
+          <input  matInput type="text" placeholder="Take a note..." [(ngModel)]="note.description" style="width: 530px;    word-wrap: break-word;"/>
         </div>
         <div class="icon">
           <app-appicons></app-appicons>

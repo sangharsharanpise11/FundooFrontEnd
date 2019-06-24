@@ -1,26 +1,66 @@
-<mat-card class="collaborator">
-    <mat-card-title>Collaborator</mat-card-title>
-    <hr>
-    <div >
-      <mat-icon>person_add</mat-icon>
-      <div class="a">
-        <span>ranpise sangharsha</span>&nbsp;
-        <span>sangharsharanpise408@gmail.com</span>
+<!-- <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around start">
+  <div>Collaborators </div>
+
+  <div fxLayout="column">
+    <div style="padding-top:2%;" fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon>person_add</mat-icon>{{emailId}}
+      <mat-divider></mat-divider>
+
+      <div fxLayout="column" fxLayoutGap="20px">
+        <div style="padding-left:2%;" fxLayout="column" *ngFor="let  collabUser of collaboratorUsers">
+          <mat-icon>person_add</mat-icon>{{collabUser.emailId}}
+        </div>
       </div>
-    </div>&nbsp;
-    <div>
-      <mat-icon>person_add</mat-icon>&nbsp;&nbsp;
-      <input matInput placeholder="Person or email to share with">
+
+      <div fxLayout="column" fxLayoutGap="20px">
+        <input matInput placeholder="Person or email to share with" [(ngModel)]="collaborator.emailId">
+      </div>
+      <div>
+        <button mat-icon-button (click)="addCollab()">
+          <mat-icon matTooltip="Add Collaborators">done</mat-icon>
+        </button>
+      </div>
     </div>
-   
-    <mat-card-footer>
-       <mat-card-content class="b" fxlayout="row">
-    <div>
-      <button mat-button>cancel</button>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row">
+    <button mat-button (click)="openDialog(items)">Cancel</button>
+    <button mat-button (click)="addCollaborator()">Save</button>
+  </div>
+</div> -->
+<mat-card>
+  <div>Collaborators</div>
+  <hr>
+  <div style="padding-left:2%;"  fxLayoutGap="20px">
+    <mat-icon>account_circle</mat-icon>{{emailId}}<span>(Owner)</span>
+  </div>
+
+  
+    <div style="padding-left:2%;" fxLayoutGap="20px" fxLayout="column" *ngFor="let  collabUser of collaboratorUsers">
+        <div fxLayout="row"  >
+        <mat-icon >account_circle</mat-icon>{{collabUser.emailId}}
+        <button  fxLayoutAlign="end center" mat-icon-button (click)="deleteCollaborator(collabUser.emailId)">
+        <mat-icon matTooltip="delete">close</mat-icon>
+        </button>
+        </div>
     </div>
-    <div>
-      <button mat-button>save</button>
-    </div>
-    </mat-card-content>
-    </mat-card-footer>
-  </mat-card>
+  
+
+  <div style="padding-left:2%;"  fxLayout="row" fxLayoutGap="20px">
+    <mat-icon>account_circle</mat-icon>
+    <input style="width: 370px;" matInput placeholder="Person or email to share with" [(ngModel)]="collaborator.emailId">
+    <button mat-icon-button (click)="addCollaborator()">
+      <mat-icon matTooltip="Add Collaborators">done</mat-icon>
+    </button>
+  </div>
+  <!-- <div>
+    <button mat-icon-button (click)="addCollab()">
+      <mat-icon matTooltip="Add Collaborators">done</mat-icon>
+    </button>
+  </div> -->
+  <mat-divider></mat-divider>
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <button mat-button (click)="openDialog(items)">Cancel</button>
+    <button mat-button (click)="addCollaborator()">Save</button>
+  </div>
+</mat-card>

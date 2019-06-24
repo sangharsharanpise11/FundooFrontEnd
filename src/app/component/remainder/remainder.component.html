@@ -1,7 +1,19 @@
- <mat-chip-list #chipList>
-       <mat-chip *ngFor="let label of remainderOfNotes">
-         {{label.labelName}}
-         <mat-icon (click)="deleteRemainderOfNote(items,label)">cancel</mat-icon>
-       </mat-chip>
-  </mat-chip-list>
-               
+  <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20px" style="margin-left: 5%">
+    <div *ngFor="let items of reminderedNotes" >
+      <div *ngIf="items.remainder!=null">
+        <mat-card  [ngStyle]="{'background-color':items.color}" class="matCard" [ngStyle]="{'background-color': items.colorCode}">
+         <div fxLayout="row" fxLayoutAlign="end start" style="height: 30px;">
+            <button mat-icon-button>
+              <img src="../../../assets/unpin.svg" matTooltip="Pin" mat-button style="height: 20px;width: 20px;">
+            </button>
+          </div> 
+           <div class="card">
+            <div class="title" style="word-wrap: break-word;">{{ items.title }}</div>
+            <div class="description" style="word-wrap: break-word;">{{ items.description }}</div>
+          </div>
+          <mat-chip>{{items.remainder}}<mat-icon (click)="deleteReminder(items)">cancel</mat-icon></mat-chip>
+          <app-appicons [noteData]="items"></app-appicons>
+        </mat-card>
+      </div>
+    </div>
+  </div> 

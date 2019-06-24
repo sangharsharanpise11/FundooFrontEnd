@@ -1,18 +1,21 @@
 <h3>Archive Notes Are:</h3>
-<div fxLayoutGap="20px" fxLayout="row wrap" *ngFor="let items of notes">
-   <div fxLayout="row" fxLayoutAlign="center center">
-      <mat-card class="matcard">
+
+<div fxLayoutGap="20px" fxLayout="row wrap" fxLayoutAlign="start center" >
+   <div *ngFor="let items of notes">
+      <mat-card class="matcard" [ngStyle]="{'background-color':items.color}">
             <div fxLayout="row" fxLayoutAlign="end start" style="height: 20px;">
                   <button mat-icon-button (click)="pin(items)">
-                    <img src="../../../assets/images.png" matTooltip="Pin" mat-button style="height: 30px;width: 30px;">
+                    <img src="../../../assets/unpin.svg" matTooltip="Pin" mat-button style="height: 30px;width: 30px;    margin-top: -30px;">
                   </button>
             </div>
          <mat-card-title>
-            <div matInput (click)="openDialog(items)" placeholder="title">{{items.title}}</div>
+            <div matInput (click)="openDialog(items)" placeholder="title" style="word-wrap: break-word;">{{items.title}}</div>
          </mat-card-title>
-         <mat-card-subtitle  (click)="openDialog(items)" placeholder="description">{{items.description}}</mat-card-subtitle>
-         <mat-card-content>
-            <button mat-icon-button>
+         <mat-card-subtitle  (click)="openDialog(items)" placeholder="description"style="word-wrap: break-word;">{{items.description}}</mat-card-subtitle>
+         <mat-chip>{{items.remainder}}<mat-icon (click)="deleteReminder(items)">cancel</mat-icon></mat-chip>
+         <app-appicons [noteData]="items"></app-appicons>
+         <!-- <mat-card-content>
+            <button mat-icon-button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
                <mat-icon>add_alert</mat-icon>
             </button>
             <button mat-icon-button>
@@ -52,7 +55,7 @@
                          </div>
                      </div>
                   </mat-menu>
-         </mat-card-content>
+         </mat-card-content> -->
       </mat-card>
    </div>
 </div>

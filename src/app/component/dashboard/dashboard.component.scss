@@ -89,7 +89,7 @@
 .searchInput{
   display: flex;
   border:none;
-  height: 50px;
+  height: fit-content;
   width: 55vw;
   background-color: #f1f3f3;
   border-radius: 8px;
@@ -104,6 +104,7 @@
   font-size: 18px;
   font-family:Arial, Helvetica, sans-serif;
   line-height: 40px;
+  margin-left: 10px;
 }
 .mat-icon-button{
   display: flex;
@@ -111,12 +112,23 @@
 }
 .sidenav{
   display: flex;
-  width: 15vw;
+  width: 20vw;
   position: absolute;
   overflow-y: scroll;
   //@errorheight: 100%;
   
 }
+.allLabels{
+  display:inline-block;
+}
+// :host ::ng-deep .mat-drawer-content {
+//   position: relative;
+//   z-index: 1;
+//   display: block;
+//   height: 100%;
+//   overflow-y: hidden;
+// }
+
 .mat-raised-button{
 
   display: flex;

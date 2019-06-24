@@ -1,0 +1,22 @@
+<div style="height: -webkit-fill-available;" fxLayout="row wrap">
+  <div class="main" *ngFor="let items of PinnedNotes">
+    <div class="updatenote">
+      <mat-card class="note" [ngStyle]="{'background-color':items.color}" class="note">
+        <div fxLayout="row wrap" fxLayoutAlign="end start" style="height: 30px;">
+          <button mat-icon-button (click)="unpin(items)">
+            <img src="../../../assets/pin.svg" matTooltip="Pin" mat-button style="height: 20px;width: 20px;">
+          </button>
+        </div>
+        <mat-card-title class="title">
+          <div (click)="openDialog(items)" matInput type="text" placeholder="title" style="word-wrap: break-word;">{{items.title}}</div>
+        </mat-card-title>
+        <mat-card-subtitle class="subtitle">
+          <div (click)="openDialog(items)" matInput type="text" placeholder="description" style="word-wrap: break-word;">{{items.description}}</div>
+        </mat-card-subtitle>
+        <mat-chip>{{items.remainder}}<mat-icon (click)="deleteReminder(items)">cancel</mat-icon></mat-chip>
+        <app-labelview [noteData]="items"></app-labelview>
+        <app-appicons [noteData]="items"></app-appicons>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -18,8 +18,8 @@ export class NoteComponent implements OnInit {
   allLabels:any [];
   remainderData:any;
   labelsOfNotes:any [];
-
-  // colors = [
+  unpinned:any[];
+    // colors = [
   //   [
   //     { colorName: "white", colorCode: "#FFFFFF" },
   //     { colorName: "red", colorCode: "#FF0000" },
@@ -49,23 +49,31 @@ export class NoteComponent implements OnInit {
     })
    // this. getLabels();
   }
-//     openDialog(items): void {
+    openDialog(items): void {
     
-//     const dialogRef = this.matdialog.open(DialognoteComponent, {
-//       width: '600px', height: '230px',
-//       data: {
-//         title: items.title,
-//         description: items.description,
-//         noteId: items.noteId
+    const dialogRef = this.matdialog.open(DialognoteComponent, {
+      width: '600px', height: '230px',
+      data: {
+        title: items.title,
+        description: items.description,
+        noteId: items.noteId
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+//   getUnPinned() {
+//     this.noteService.getRequest('note/getunpinnednotes').subscribe(
+//       (response: any) => {
+//         this.unpinned = response;
+//         console.log(response);
 //       }
-//     });
-
-//     dialogRef.afterClosed().subscribe(result => {
-//       console.log('The dialog was closed');
-//     });
+//     )
 //   }
-
-//   deletenote(items):void{
+// //   deletenote(items):void{
 //   console.log("noteid :",this.items);
 //     this.noteService.putRequest('note/trash?noteId='+items.noteId,null).subscribe(
 //       (response: any) => {

@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   user:User=new User();
   loginForm:FormGroup;
   token: string;
+
+
    constructor( private snackBar:MatSnackBar,private route: ActivatedRoute,private formBuilder:FormBuilder,private router:Router, private httpservice: HttpService)  { }
     
     ngOnInit() {
@@ -23,8 +25,7 @@ export class LoginComponent implements OnInit {
           'password':new FormControl(this.user.password, [Validators.required, Validators.minLength(6)])
         }
       )
-      
-    }
+        }
     
   onLogin(){
   console.log(this.loginForm.value);
@@ -34,7 +35,9 @@ export class LoginComponent implements OnInit {
       {
         console.log(response);
         localStorage.setItem('token',response.token);
+        localStorage.setItem('emailId',this.loginForm.value.emailId);
         console.log(response.token)
+        console.log("in login "+this.loginForm.value.emailId);
         this.snackBar.open(
           "Login Successfully",
           "undo",
